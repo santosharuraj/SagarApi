@@ -10,10 +10,11 @@ app.use(express.json({ extented: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 const PORT = process.env.PORT || 4000;
-
+const MongoDB_URL =
+    "mongodb+srv://santosh:santosh@cluster0.xsonw5h.mongodb.net/Users?retryWrites=true&w=majority";
 mongoose.set("strictQuery", false);
 mongoose
-    .connect(process.env.MongoDB_URL, { useNewUrlParser: true })
+    .connect(MongoDB_URL, { useNewUrlParser: true })
     .then((result) => {
         app.listen(PORT, () => {
             console.log(`Port is running at ${PORT}`);
