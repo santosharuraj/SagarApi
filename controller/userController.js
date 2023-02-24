@@ -27,8 +27,18 @@ export const GetAPI = async(req, res) => {
             return res.status(400).json("Not exist");
         }
 
-        res.status(201).json(exist);
+        res.status(200).json(exist);
     } catch (error) {
         res.status(500).json(error);
+    }
+};
+
+export const allUser = async(req, res) => {
+    try {
+        const users = await userModal.find();
+
+        res.status(200).json(users);
+    } catch (error) {
+        console.log(error);
     }
 };
